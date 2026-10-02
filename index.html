@@ -1,0 +1,2447 @@
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Betül Gümüş</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #33260b 0%,
+            #171105 35%,
+            #070604 70%,
+            #000 100%
+        );
+
+    color: white;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+}
+
+
+/* ========================= */
+/* ALTIN IŞIK */
+/* ========================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    width: 100vw;
+    height: 100vh;
+
+    left: 0;
+    top: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,215,90,0.15),
+            transparent 55%
+        );
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* ========================= */
+/* ÇERÇEVE */
+/* ========================= */
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    left: 25px;
+    right: 25px;
+
+    top: 25px;
+    bottom: 25px;
+
+    border:
+        1px solid
+        rgba(212,175,55,0.3);
+
+    pointer-events: none;
+
+    z-index: 100;
+}
+
+
+/* ========================= */
+/* SAHNELER */
+/* ========================= */
+
+.sahne {
+
+    position: absolute;
+
+    width: 100%;
+    height: 100vh;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    z-index: 5;
+}
+
+
+.sahne.aktif {
+
+    display: flex;
+
+    animation:
+        sahneGiris
+        1.5s ease;
+}
+
+
+@keyframes sahneGiris {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.96);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+
+}
+
+
+/* ========================= */
+/* İÇERİK */
+/* ========================= */
+
+.icerik {
+
+    position: relative;
+
+    z-index: 20;
+
+    max-width: 90%;
+}
+
+
+/* ========================= */
+/* TEBRİKLER */
+/* ========================= */
+
+.tebrikler {
+
+    font-size: 24px;
+
+    letter-spacing: 12px;
+
+    color: #e5c76b;
+
+    text-shadow:
+        0 0 10px #e5c76b,
+        0 0 30px rgba(212,175,55,0.7);
+}
+
+
+.isim {
+
+    margin-top: 25px;
+
+    font-size: 58px;
+
+    letter-spacing: 8px;
+
+    color: white;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 25px #d4af37,
+        0 0 50px rgba(212,175,55,0.6);
+}
+
+
+/* ========================= */
+/* 24 YIL */
+/* ========================= */
+
+.yillar {
+
+    font-size: 27px;
+
+    letter-spacing: 7px;
+
+    color: #e5c76b;
+
+    text-shadow:
+        0 0 15px #d4af37,
+        0 0 35px rgba(212,175,55,0.6);
+}
+
+
+/* ========================= */
+/* KUPA */
+/* ========================= */
+
+.kupa {
+
+    font-size: 80px;
+
+    margin-bottom: 25px;
+
+    filter:
+        drop-shadow(0 0 15px #e5c76b)
+        drop-shadow(0 0 35px #d4af37);
+}
+
+
+.odul {
+
+    font-size: 44px;
+
+    line-height: 1.5;
+
+    letter-spacing: 5px;
+
+    color: white;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 25px rgba(255,215,90,0.8);
+}
+
+
+/* ========================= */
+/* KAZANAN */
+/* ========================= */
+
+.kazanan-baslik {
+
+    font-size: 21px;
+
+    letter-spacing: 7px;
+
+    margin-bottom: 25px;
+
+    color: #e5c76b;
+
+    text-shadow:
+        0 0 15px #e5c76b;
+}
+
+
+.kazanan {
+
+    font-size: 58px;
+
+    letter-spacing: 8px;
+
+    color: white;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 25px #d4af37,
+        0 0 50px rgba(212,175,55,0.7);
+}
+
+
+/* ========================= */
+/* 🌹 GÜLLER */
+/* ========================= */
+
+.guller {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 10;
+}
+
+
+.gul {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 14px;
+    height: 22px;
+
+    border-radius:
+        70% 30% 70% 30%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a51d35,
+            #4a0712
+        );
+
+    box-shadow:
+        0 0 8px
+        rgba(165,29,53,0.8);
+
+    opacity: 0;
+
+    animation:
+        gul
+        4s ease-out forwards;
+}
+
+
+@keyframes gul {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%,-50%)
+            rotate(0deg)
+            scale(0.2);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            rotate(var(--r))
+            scale(1);
+    }
+
+}
+
+
+/* ========================= */
+/* 📸 FOTOĞRAF SAHNELERİ */
+/* ========================= */
+
+.fotograf-alani {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 28px;
+}
+
+
+.fotograf {
+
+    width: 400px;
+
+    height: 480px;
+
+    border:
+        2px solid
+        rgba(229,199,107,0.7);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,215,90,0.08),
+            rgba(255,255,255,0.02)
+        );
+
+    box-shadow:
+
+        0 0 15px
+        rgba(212,175,55,0.5),
+
+        0 0 50px
+        rgba(212,175,55,0.2),
+
+        inset 0 0 40px
+        rgba(212,175,55,0.08);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.fotograf::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 12px;
+
+    border:
+        1px solid
+        rgba(255,215,90,0.25);
+
+    z-index: 3;
+
+    pointer-events: none;
+}
+
+
+/* ========================= */
+/* GERÇEK FOTOĞRAF */
+/* ========================= */
+
+.fotograf img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* ========================= */
+/* FOTOĞRAF PATLAMA EFEKTİ */
+/* ========================= */
+
+.foto-efekt {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 10px;
+    height: 10px;
+
+    transform:
+        translate(-50%,-50%);
+
+    pointer-events: none;
+
+    z-index: 10;
+}
+
+
+/* ALTIN PARÇALAR */
+
+.altin-parca {
+
+    position: absolute;
+
+    width: 4px;
+    height: 15px;
+
+    background: #f3cf68;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px
+        rgba(243,207,104,0.8);
+
+    animation:
+        altinPatlama
+        1.5s ease-out forwards;
+}
+
+
+@keyframes altinPatlama {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(0,0)
+            rotate(0)
+            scale(.2);
+    }
+
+    15% {
+
+        opacity: 1;
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            rotate(var(--r))
+            scale(1);
+    }
+
+}
+
+
+/* ALTIN YAPRAKLAR */
+
+.altin-yaprak {
+
+    position: absolute;
+
+    width: 13px;
+    height: 6px;
+
+    background: #d9ae42;
+
+    border-radius:
+        100% 0 100% 0;
+
+    box-shadow:
+        0 0 8px
+        rgba(217,174,66,0.7);
+
+    animation:
+        yaprakPatlama
+        1.8s ease-out forwards;
+}
+
+
+@keyframes yaprakPatlama {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(0,0)
+            rotate(0)
+            scale(.3);
+    }
+
+    15% {
+
+        opacity: 1;
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            rotate(var(--r))
+            scale(1);
+    }
+
+}
+
+
+/* FOTOĞRAF GÜL PARÇALARI */
+
+.foto-gul {
+
+    position: absolute;
+
+    width: 12px;
+    height: 7px;
+
+    background: #7d1024;
+
+    border-radius:
+        100% 0 100% 0;
+
+    box-shadow:
+        0 0 7px
+        rgba(125,16,36,0.7);
+
+    animation:
+        fotoGul
+        1.8s ease-out forwards;
+}
+
+
+@keyframes fotoGul {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(0,0)
+            rotate(0)
+            scale(.3);
+    }
+
+    15% {
+
+        opacity: 1;
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            rotate(var(--r))
+            scale(1);
+    }
+
+}
+
+
+/* ========================= */
+/* FOTOĞRAF MESAJI */
+/* ========================= */
+
+.foto-mesaj {
+
+    max-width: 750px;
+
+    font-size: 25px;
+
+    line-height: 1.6;
+
+    letter-spacing: 2px;
+
+    color: white;
+
+    text-shadow:
+        0 0 15px
+        rgba(255,215,90,0.6);
+}
+
+
+/* ========================= */
+/* ☕ KAHVE */
+/* ========================= */
+
+.kahve {
+
+    font-size: 90px;
+
+    margin-bottom: 30px;
+
+    filter:
+        drop-shadow(0 0 15px #d4af37)
+        drop-shadow(0 0 35px rgba(212,175,55,0.6));
+}
+
+
+.kahve-baslik {
+
+    font-size: 25px;
+
+    line-height: 1.7;
+
+    letter-spacing: 2px;
+
+    max-width: 750px;
+
+    color: white;
+
+    text-shadow:
+        0 0 15px
+        rgba(255,215,90,0.6);
+}
+
+
+/* ========================= */
+/* ❤️ FİNAL */
+/* ========================= */
+
+.final-yazi {
+
+    max-width: 800px;
+
+    font-size: 25px;
+
+    line-height: 1.8;
+
+    letter-spacing: 1px;
+
+    color: white;
+
+    text-shadow:
+        0 0 12px
+        rgba(255,215,90,0.5);
+}
+
+
+.final-yazi .vurgu {
+
+    color: #e5c76b;
+
+    font-size: 30px;
+
+    text-shadow:
+        0 0 15px #d4af37,
+        0 0 30px rgba(212,175,55,0.6);
+}
+
+
+/* ========================= */
+/* 🔁 TEKRAR OYNA */
+/* ========================= */
+
+.tekrar-baslik {
+
+    font-size: 28px;
+
+    letter-spacing: 3px;
+
+    color: #e5c76b;
+
+    margin-bottom: 35px;
+
+    text-shadow:
+        0 0 15px #d4af37,
+        0 0 30px rgba(212,175,55,0.5);
+}
+
+
+.tekrar-buton {
+
+    padding:
+        18px 45px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d4af37,
+            #f4d778,
+            #b88a18
+        );
+
+    border: none;
+
+    border-radius: 3px;
+
+    color: #171105;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 17px;
+
+    letter-spacing: 4px;
+
+    cursor: pointer;
+
+    box-shadow:
+
+        0 0 15px
+        rgba(212,175,55,0.6),
+
+        0 0 40px
+        rgba(212,175,55,0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.tekrar-buton:hover {
+
+    transform:
+        scale(1.06);
+
+    box-shadow:
+
+        0 0 25px
+        rgba(212,175,55,0.9),
+
+        0 0 60px
+        rgba(212,175,55,0.4);
+}
+
+
+.kesinlikle {
+
+    margin-top: 15px;
+
+    color:
+        rgba(229,199,107,0.8);
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    text-shadow:
+        0 0 10px
+        rgba(212,175,55,0.4);
+}
+
+
+/* ========================= */
+/* 🖼️ GALERİ */
+/* ========================= */
+
+.galeri {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    overflow-y: auto;
+
+    padding:
+        70px 40px 80px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #302309 0%,
+            #120d04 45%,
+            #030302 100%
+        );
+
+    z-index: 500;
+
+    animation:
+        galeriGiris
+        1.2s ease;
+}
+
+
+.galeri.aktif {
+
+    display: block;
+
+}
+
+
+@keyframes galeriGiris {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.97);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+/* GALERİ BAŞLIK */
+
+.galeri-baslik {
+
+    text-align: center;
+
+    margin-bottom: 55px;
+
+}
+
+
+.galeri-baslik-ust {
+
+    font-size: 16px;
+
+    letter-spacing: 8px;
+
+    color: #e5c76b;
+
+    margin-bottom: 18px;
+
+}
+
+
+.galeri-baslik-alt {
+
+    font-size: 34px;
+
+    letter-spacing: 5px;
+
+    color: white;
+
+    text-shadow:
+
+        0 0 10px white,
+
+        0 0 25px #d4af37,
+
+        0 0 45px rgba(212,175,55,0.6);
+
+}
+
+
+/* KOLAJ */
+
+.galeri-grid {
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(12, 1fr);
+
+    grid-auto-rows: 120px;
+
+    gap: 22px;
+
+}
+
+
+/* GALERİ FOTOĞRAFLARI */
+
+.galeri-foto {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        2px solid
+        rgba(229,199,107,0.65);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,215,90,0.09),
+            rgba(255,255,255,0.02)
+        );
+
+    box-shadow:
+
+        0 0 18px
+        rgba(212,175,55,0.35),
+
+        inset 0 0 35px
+        rgba(212,175,55,0.08);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+.galeri-foto:hover {
+
+    transform:
+        scale(1.025);
+
+    box-shadow:
+
+        0 0 25px
+        rgba(212,175,55,0.7),
+
+        0 0 60px
+        rgba(212,175,55,0.2);
+}
+
+
+.galeri-foto::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 10px;
+
+    border:
+        1px solid
+        rgba(255,215,90,0.25);
+
+    pointer-events: none;
+
+    z-index: 3;
+}
+
+
+/* GALERİ GERÇEK FOTOĞRAFLARI */
+
+.galeri-foto img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* KOLAJ BOYUTLARI */
+
+.galeri-foto:nth-child(1) {
+
+    grid-column:
+        span 7;
+
+    grid-row:
+        span 5;
+
+}
+
+
+.galeri-foto:nth-child(2) {
+
+    grid-column:
+        span 5;
+
+    grid-row:
+        span 4;
+
+}
+
+
+.galeri-foto:nth-child(3) {
+
+    grid-column:
+        span 5;
+
+    grid-row:
+        span 5;
+
+}
+
+
+.galeri-foto:nth-child(4) {
+
+    grid-column:
+        span 7;
+
+    grid-row:
+        span 4;
+
+}
+
+
+/* GALERİ ALT YAZISI */
+
+.galeri-son {
+
+    text-align: center;
+
+    margin-top: 55px;
+
+    color:
+        rgba(229,199,107,0.75);
+
+    font-size: 16px;
+
+    letter-spacing: 4px;
+
+}
+
+
+/* ========================= */
+/* 🎬 BAŞLANGIÇ EKRANI */
+/* ========================= */
+
+#baslangic {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #33260b 0%,
+            #171105 35%,
+            #070604 70%,
+            #000 100%
+        );
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    z-index: 1000;
+
+    transition:
+        opacity 1s ease;
+}
+
+
+.baslangic-yazi {
+
+    font-size: 38px;
+
+    letter-spacing: 4px;
+
+    color: white;
+
+    margin-bottom: 40px;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 25px #d4af37,
+        0 0 50px rgba(212,175,55,0.7);
+}
+
+
+.basla-buton {
+
+    padding:
+        18px 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d4af37,
+            #f4d778,
+            #b88a18
+        );
+
+    border: none;
+
+    border-radius: 3px;
+
+    color: #171105;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 18px;
+
+    letter-spacing: 5px;
+
+    cursor: pointer;
+
+    box-shadow:
+
+        0 0 15px
+        rgba(212,175,55,0.6),
+
+        0 0 40px
+        rgba(212,175,55,0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.basla-buton:hover {
+
+    transform:
+        scale(1.06);
+
+    box-shadow:
+
+        0 0 25px
+        rgba(212,175,55,0.9),
+
+        0 0 60px
+        rgba(212,175,55,0.4);
+}
+
+
+/* ========================= */
+/* TELEFON */
+/* ========================= */
+
+@media (max-width:600px) {
+
+    body::after {
+
+        left: 12px;
+        right: 12px;
+        top: 12px;
+        bottom: 12px;
+
+    }
+
+
+    .tebrikler {
+
+        font-size: 16px;
+
+        letter-spacing: 7px;
+
+    }
+
+
+    .isim {
+
+        font-size: 38px;
+
+        letter-spacing: 5px;
+
+    }
+
+
+    .yillar {
+
+        font-size: 18px;
+
+        letter-spacing: 4px;
+
+    }
+
+
+    .odul {
+
+        font-size: 29px;
+
+    }
+
+
+    .kupa {
+
+        font-size: 65px;
+
+    }
+
+
+    .kazanan {
+
+        font-size: 38px;
+
+        letter-spacing: 5px;
+
+    }
+
+
+    .kazanan-baslik {
+
+        font-size: 16px;
+
+        letter-spacing: 4px;
+
+    }
+
+
+    .fotograf {
+
+        width: 280px;
+
+        height: 360px;
+
+    }
+
+
+    .foto-mesaj {
+
+        font-size: 18px;
+
+        padding:
+            0 15px;
+
+    }
+
+
+    .kahve {
+
+        font-size: 70px;
+
+    }
+
+
+    .kahve-baslik {
+
+        font-size: 19px;
+
+        padding:
+            0 20px;
+
+    }
+
+
+    .final-yazi {
+
+        font-size: 18px;
+
+        line-height: 1.7;
+
+        padding:
+            0 20px;
+
+    }
+
+
+    .final-yazi .vurgu {
+
+        font-size: 22px;
+
+    }
+
+
+    .tekrar-baslik {
+
+        font-size: 21px;
+
+        padding:
+            0 20px;
+
+    }
+
+
+    .tekrar-buton {
+
+        padding:
+            16px 30px;
+
+        font-size: 14px;
+
+    }
+
+
+    .kesinlikle {
+
+        font-size: 11px;
+
+        letter-spacing: 2px;
+
+    }
+
+
+    /* MOBİL GALERİ */
+
+    .galeri {
+
+        padding:
+            45px 18px 60px;
+
+    }
+
+
+    .galeri-baslik {
+
+        margin-bottom: 35px;
+
+    }
+
+
+    .galeri-baslik-ust {
+
+        font-size: 11px;
+
+        letter-spacing: 5px;
+
+    }
+
+
+    .galeri-baslik-alt {
+
+        font-size: 24px;
+
+        letter-spacing: 3px;
+
+    }
+
+
+    .galeri-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        grid-auto-rows: 170px;
+
+        gap: 14px;
+
+    }
+
+
+    .galeri-foto:nth-child(1) {
+
+        grid-column:
+            span 2;
+
+        grid-row:
+            span 3;
+
+    }
+
+
+    .galeri-foto:nth-child(2) {
+
+        grid-column:
+            span 1;
+
+        grid-row:
+            span 2;
+
+    }
+
+
+    .galeri-foto:nth-child(3) {
+
+        grid-column:
+            span 1;
+
+        grid-row:
+            span 2;
+
+    }
+
+
+    .galeri-foto:nth-child(4) {
+
+        grid-column:
+            span 2;
+
+        grid-row:
+            span 2;
+
+    }
+
+
+    .baslangic-yazi {
+
+        font-size: 27px;
+
+        letter-spacing: 2px;
+
+        padding: 0 20px;
+
+    }
+
+
+    .basla-buton {
+
+        padding:
+            16px 40px;
+
+        font-size: 15px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ========================= -->
+<!-- 🎵 MÜZİK -->
+<!-- ========================= -->
+
+<audio id="muzik" loop>
+    <source src="müzik/muzik.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- ========================= -->
+<!-- 🎬 BAŞLANGIÇ -->
+<!-- ========================= -->
+
+<div id="baslangic">
+
+    <div class="baslangic-yazi">
+        HAZIR MISIN HAYATIM? ❤️
+    </div>
+
+    <button
+        class="basla-buton"
+        onclick="baslat()">
+
+        BAŞLA
+
+    </button>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- 1 -->
+<!-- ========================= -->
+
+<div id="sahne1" class="sahne aktif">
+
+    <div class="icerik">
+
+        <div class="tebrikler">
+            TEBRİKLER
+        </div>
+
+        <div class="isim">
+            BETÜL GÜMÜŞ
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- 2 -->
+<!-- ========================= -->
+
+<div id="sahne2" class="sahne">
+
+    <div class="icerik">
+
+        <div class="yillar">
+            24 YILDA BİR DÜZENLENEN
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- 3 -->
+<!-- ========================= -->
+
+<div id="sahne3" class="sahne">
+
+    <div class="icerik">
+
+        <div class="kupa">
+            🏆
+        </div>
+
+        <div class="odul">
+
+            DÜNYANIN EN GÜZEL KADINI
+
+            <br>
+
+            ÖDÜLÜ
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- 4 -->
+<!-- ========================= -->
+
+<div id="sahne4" class="sahne">
+
+    <div
+        class="guller"
+        id="guller">
+    </div>
+
+
+    <div class="icerik">
+
+        <div class="kazanan-baslik">
+            BU YILIN KAZANANI
+        </div>
+
+        <div class="kazanan">
+            BETÜL GÜMÜŞ
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- 5 -->
+<!-- ========================= -->
+
+<div id="sahne5" class="sahne">
+
+    <div class="icerik fotograf-alani">
+
+        <div class="fotograf">
+
+            <div class="foto-efekt"></div>
+
+            <img
+                src="resimler/foto1.jpeg"
+                alt="Betül">
+
+        </div>
+
+
+        <div class="foto-mesaj">
+
+            Bazı güzellikler anlatılmaz,
+            sadece bakınca anlaşılır.
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- 6 -->
+<!-- ========================= -->
+
+<div id="sahne6" class="sahne">
+
+    <div class="icerik fotograf-alani">
+
+        <div class="fotograf">
+
+            <div class="foto-efekt"></div>
+
+            <img
+                src="resimler/foto2.jpeg"
+                alt="Betül">
+
+        </div>
+
+
+        <div class="foto-mesaj">
+
+            Gülüşünde,
+            insanın tekrar tekrar bakmak isteyeceği
+            bir şey var.
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- 7 -->
+<!-- ========================= -->
+
+<div id="sahne7" class="sahne">
+
+    <div class="icerik fotograf-alani">
+
+        <div class="fotograf">
+
+            <div class="foto-efekt"></div>
+
+            <img
+                src="resimler/foto3.jpeg"
+                alt="Betül">
+
+        </div>
+
+
+        <div class="foto-mesaj">
+
+            Güzelliğin sadece yüzünde değil,
+            sana baktığımda hissettirdiğin
+            her şeyde.
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- 8 -->
+<!-- ========================= -->
+
+<div id="sahne8" class="sahne">
+
+    <div class="icerik fotograf-alani">
+
+        <div class="fotograf">
+
+            <div class="foto-efekt"></div>
+
+            <img
+                src="resimler/foto4.jpeg"
+                alt="Betül">
+
+        </div>
+
+
+        <div class="foto-mesaj">
+
+            Bazı insanlar güzel görünür,
+            bazıları ise güzelliğin kendisi gibi gelir.
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- 9 KAHVE -->
+<!-- ========================= -->
+
+<div id="sahne9" class="sahne">
+
+    <div class="icerik">
+
+        <div class="kahve">
+            ☕
+        </div>
+
+
+        <div class="kahve-baslik">
+
+            Şimdi kendini ödüllendir.
+
+            <br>
+
+            Solmayan ışıltın için
+            kendine bir gülümseme hediye et
+
+            <br>
+
+            ve kendine güzel bir kahve hazırla.
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- 10 FİNAL -->
+<!-- ========================= -->
+
+<div id="sahne10" class="sahne">
+
+    <div class="icerik final-yazi">
+
+        Bunca zamandır ne kadar zor zamanlar
+        geçirmiş olsak da,
+        bildiğimiz en değerli ve en güzel şey;
+
+        <br><br>
+
+        <span class="vurgu">
+            içindeki hiç solmayan ışıltın.
+        </span>
+
+        <br><br>
+
+        Ve belki dünyanın en güzel kadını
+        ödülünü gerçekten veremem...
+
+        <br><br>
+
+        <span class="vurgu">
+            Ama benim dünyamda bu ödülün sahibi
+            zaten uzun zamandır belli. ❤️
+        </span>
+
+        <br><br>
+
+        İyi ki varsın birtanem.
+
+        <br>
+
+        İyi ki o güzel ışıltın hiç solmadı. ✨
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- 11 -->
+<!-- ========================= -->
+
+<div id="sahne11" class="sahne">
+
+    <div class="icerik">
+
+        <div class="tekrar-baslik">
+
+            Bu güzelliği yeniden görmek
+            ister misin?
+
+        </div>
+
+
+        <button
+            class="tekrar-buton"
+            onclick="tekrarOyna()">
+
+            TEKRAR OYNA
+
+        </button>
+
+
+        <div class="kesinlikle">
+
+            (KESİNLİKLE BAS)
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- 🖼️ GALERİ -->
+<!-- ========================= -->
+
+<div
+    id="galeri"
+    class="galeri">
+
+
+    <div class="galeri-baslik">
+
+        <div class="galeri-baslik-ust">
+
+            SENİ YENİDEN GÖRMEK İÇİN
+
+        </div>
+
+
+        <div class="galeri-baslik-alt">
+
+            BETÜL GÜMÜŞ ✨
+
+        </div>
+
+    </div>
+
+
+    <div class="galeri-grid">
+
+
+        <div class="galeri-foto">
+
+            <img
+                src="resimler/foto1.jpeg"
+                alt="Betül">
+
+        </div>
+
+
+        <div class="galeri-foto">
+
+            <img
+                src="resimler/foto2.jpeg"
+                alt="Betül">
+
+        </div>
+
+
+        <div class="galeri-foto">
+
+            <img
+                src="resimler/foto3.jpeg"
+                alt="Betül">
+
+        </div>
+
+
+        <div class="galeri-foto">
+
+            <img
+                src="resimler/foto4.jpeg"
+                alt="Betül">
+
+        </div>
+
+
+    </div>
+
+
+    <div class="galeri-son">
+
+        İyi ki o güzel ışıltın hiç solmadı. ✨
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+/* ========================= */
+/* DEĞİŞKENLER */
+/* ========================= */
+
+let mevcutSahne = 1;
+
+let zamanlayici;
+
+const muzik =
+    document.getElementById("muzik");
+
+
+/* ========================= */
+/* 🌹 GÜL PATLAMASI */
+/* ========================= */
+
+function gulPatlat() {
+
+    const alan =
+        document.getElementById("guller");
+
+    alan.innerHTML = "";
+
+
+    for (let i = 0; i < 45; i++) {
+
+        const gul =
+            document.createElement("div");
+
+        gul.className = "gul";
+
+
+        const x =
+            (Math.random() - 0.5)
+            * 1000;
+
+
+        const y =
+            (Math.random() - 0.5)
+            * 700;
+
+
+        const r =
+            Math.random() * 720 - 360;
+
+
+        gul.style.setProperty(
+            "--x",
+            x + "px"
+        );
+
+
+        gul.style.setProperty(
+            "--y",
+            y + "px"
+        );
+
+
+        gul.style.setProperty(
+            "--r",
+            r + "deg"
+        );
+
+
+        gul.style.animationDelay =
+            Math.random() * 0.5 + "s";
+
+
+        alan.appendChild(gul);
+
+    }
+
+}
+
+
+/* ========================= */
+/* 📸 FOTOĞRAF PATLAMASI */
+/* ========================= */
+
+function fotoPatlat(numara) {
+
+    const sahne =
+        document.getElementById(
+            "sahne" + numara
+        );
+
+
+    const efekt =
+        sahne.querySelector(
+            ".foto-efekt"
+        );
+
+
+    if (!efekt) {
+
+        return;
+
+    }
+
+
+    efekt.innerHTML = "";
+
+
+    for (let i = 0; i < 55; i++) {
+
+        const parca =
+            document.createElement("div");
+
+        parca.className =
+            "altin-parca";
+
+
+        const aci =
+            Math.random() *
+            Math.PI * 2;
+
+
+        const mesafe =
+            120 +
+            Math.random() * 260;
+
+
+        const x =
+            Math.cos(aci) *
+            mesafe;
+
+
+        const y =
+            Math.sin(aci) *
+            mesafe;
+
+
+        const r =
+            Math.random() *
+            720 - 360;
+
+
+        parca.style.setProperty(
+            "--x",
+            x + "px"
+        );
+
+
+        parca.style.setProperty(
+            "--y",
+            y + "px"
+        );
+
+
+        parca.style.setProperty(
+            "--r",
+            r + "deg"
+        );
+
+
+        parca.style.left = "0";
+
+        parca.style.top = "0";
+
+
+        parca.style.animationDelay =
+            Math.random() * 0.25 + "s";
+
+
+        efekt.appendChild(parca);
+
+    }
+
+
+    for (let i = 0; i < 18; i++) {
+
+        const yaprak =
+            document.createElement("div");
+
+        yaprak.className =
+            "altin-yaprak";
+
+
+        const aci =
+            Math.random() *
+            Math.PI * 2;
+
+
+        const mesafe =
+            100 +
+            Math.random() * 280;
+
+
+        const x =
+            Math.cos(aci) *
+            mesafe;
+
+
+        const y =
+            Math.sin(aci) *
+            mesafe;
+
+
+        const r =
+            Math.random() *
+            720 - 360;
+
+
+        yaprak.style.setProperty(
+            "--x",
+            x + "px"
+        );
+
+
+        yaprak.style.setProperty(
+            "--y",
+            y + "px"
+        );
+
+
+        yaprak.style.setProperty(
+            "--r",
+            r + "deg"
+        );
+
+
+        yaprak.style.left = "0";
+
+        yaprak.style.top = "0";
+
+
+        yaprak.style.animationDelay =
+            Math.random() * 0.3 + "s";
+
+
+        efekt.appendChild(yaprak);
+
+    }
+
+
+    for (let i = 0; i < 12; i++) {
+
+        const gul =
+            document.createElement("div");
+
+        gul.className =
+            "foto-gul";
+
+
+        const aci =
+            Math.random() *
+            Math.PI * 2;
+
+
+        const mesafe =
+            120 +
+            Math.random() * 240;
+
+
+        const x =
+            Math.cos(aci) *
+            mesafe;
+
+
+        const y =
+            Math.sin(aci) *
+            mesafe;
+
+
+        const r =
+            Math.random() *
+            720 - 360;
+
+
+        gul.style.setProperty(
+            "--x",
+            x + "px"
+        );
+
+
+        gul.style.setProperty(
+            "--y",
+            y + "px"
+        );
+
+
+        gul.style.setProperty(
+            "--r",
+            r + "deg"
+        );
+
+
+        gul.style.left = "0";
+
+        gul.style.top = "0";
+
+
+        gul.style.animationDelay =
+            Math.random() * 0.3 + "s";
+
+
+        efekt.appendChild(gul);
+
+    }
+
+}
+
+
+/* ========================= */
+/* SAHNE GÖSTER */
+/* ========================= */
+
+function sahneGoster(numara) {
+
+    document
+        .querySelectorAll(".sahne")
+        .forEach(function(sahne) {
+
+            sahne.classList.remove("aktif");
+
+        });
+
+
+    document
+        .getElementById(
+            "sahne" + numara
+        )
+        .classList.add("aktif");
+
+
+    mevcutSahne = numara;
+
+
+    if (numara === 4) {
+
+        gulPatlat();
+
+    }
+
+
+    if (
+        numara >= 5 &&
+        numara <= 8
+    ) {
+
+        fotoPatlat(numara);
+
+    }
+
+}
+
+
+/* ========================= */
+/* SAHNE GEÇİŞİ */
+/* ========================= */
+
+function sonrakiSahne() {
+
+    clearTimeout(zamanlayici);
+
+
+    if (mevcutSahne >= 11) {
+
+        return;
+
+    }
+
+
+    mevcutSahne++;
+
+
+    sahneGoster(
+        mevcutSahne
+    );
+
+
+    if (mevcutSahne < 5) {
+
+        zamanlayici =
+            setTimeout(
+                sonrakiSahne,
+                4500
+            );
+
+    }
+
+
+    else if (mevcutSahne < 10) {
+
+        zamanlayici =
+            setTimeout(
+                sonrakiSahne,
+                6500
+            );
+
+    }
+
+
+    else if (mevcutSahne === 10) {
+
+        zamanlayici =
+            setTimeout(
+                sonrakiSahne,
+                14000
+            );
+
+    }
+
+
+    else if (mevcutSahne === 11) {
+
+        clearTimeout(
+            zamanlayici
+        );
+
+    }
+
+}
+
+
+/* ========================= */
+/* 🔁 TEKRAR OYNA */
+/* ========================= */
+
+function tekrarOyna() {
+
+    clearTimeout(
+        zamanlayici
+    );
+
+
+    document
+        .querySelectorAll(".sahne")
+        .forEach(function(sahne) {
+
+            sahne.classList.remove("aktif");
+
+        });
+
+
+    document
+        .getElementById("galeri")
+        .classList.add("aktif");
+
+}
+
+
+/* ========================= */
+/* 🎬 BAŞLAT */
+/* ========================= */
+
+function baslat() {
+
+    /* ŞARKIYI BAŞLAT */
+
+    muzik.play().catch(function() {});
+
+
+    /* BAŞLANGIÇ EKRANINI KAPAT */
+
+    const baslangic =
+        document.getElementById("baslangic");
+
+
+    baslangic.style.opacity = "0";
+
+
+    setTimeout(function() {
+
+        baslangic.style.display = "none";
+
+
+        /* İLK SAHNEYİ BAŞLAT */
+
+        mevcutSahne = 1;
+
+        sahneGoster(1);
+
+
+        /* AKIŞI BAŞLAT */
+
+        zamanlayici =
+            setTimeout(
+                sonrakiSahne,
+                4500
+            );
+
+    }, 1000);
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
+```
